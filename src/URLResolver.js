@@ -40,7 +40,7 @@ class URLResolver {
 	resolve(url, headers = {}) {
 		if (!this.resolving[url]) {
 			this.resolving[url] = new Promise((resolve, reject) => {
-				if (url.toLowerCase().indexOf('https://') === 0 || url.toLowerCase().indexOf('http://') === 0) {
+				if (url.toLowerCase().indexOf('https://') === 0 || url.toLowerCase().indexOf('http://') === 0 || url.toLowerCase().indexOf('app://') === 0) {
 					if (this.fs.existsSync(url)) {
 						// url was downloaded earlier
 						resolve();

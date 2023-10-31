@@ -83,6 +83,8 @@ class StyleContextStack {
 			'font',
 			'fontSize',
 			'fontFeatures',
+			'border',
+			'borderColor',
 			'bold',
 			'italics',
 			'alignment',
