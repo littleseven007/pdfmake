@@ -512,7 +512,9 @@ class LayoutBuilder {
 		// begin - Vertical alignment
 		const lastNode = this.__nodesHierarchy.pop();
 		lastNode.__contentHeight = Math.max(...columns.map(c => c.__contentHeight));
-		this.__nodesHierarchy[this.__nodesHierarchy.length - 1].__contentHeight += lastNode.__contentHeight;
+		if (this.__nodesHierarchy.length) {
+			this.__nodesHierarchy[this.__nodesHierarchy.length - 1].__contentHeight += lastNode.__contentHeight;
+		}
 		// end - Vertical alignment
 	}
 

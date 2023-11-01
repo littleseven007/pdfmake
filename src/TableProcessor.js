@@ -369,6 +369,8 @@ class TableProcessor {
 		table.body.forEach((row, rowIndex) => {
 			// filter only cells with vertical alignment (middle / bottom)
 			!Array.isArray(row) && row.columns && (row = row.columns);
+			// 继承table的verticalAlign
+			row.forEach(cell => (cell.verticalAlign = cell.verticalAlign || table.verticalAlign))
 			row.filter(cell => cell.verticalAlign && ['middle', 'bottom'].indexOf(cell.verticalAlign) > -1).forEach(cell => {
 				let nestedTables;
 				if (!cell._span) {
@@ -390,10 +392,11 @@ class TableProcessor {
 								i.item.__tableRef && nestedTables.some(nt => nt.table === i.item.__tableRef));
 						} else if (cell.stack) {
 							const tables = cell.stack.filter(x => x.table);
-							nestedTables = getNestedTables(tables[0]);
+							nestedTables = tables.length ? getNestedTables(tables[0]) : [];
+							const cells = tables.length ? getCells(tables[0]) : []
 							itemHeight = tables.reduce((p, v) => p + v.__height, 0) +
 								cell.stack.flatMap(x => x.__contentHeight).filter(Boolean).reduce((p, v) => p + v, 0);
-							items = [...items, pageItems.filter(i => getCells(tables[0]).indexOf(i.item.__nodeRef) > -1 ||
+							items = [...items, pageItems.filter(i => cells.indexOf(i.item.__nodeRef) > -1 ||
 								i.item.__tableRef && nestedTables.some(nt => nt.table === i.item.__tableRef))].flat();
 						} else {
 							itemHeight = this.getCellContentHeight(cell, items);

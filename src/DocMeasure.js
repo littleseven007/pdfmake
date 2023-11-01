@@ -528,6 +528,8 @@ class DocMeasure {
 		function measureCb(_this, data) {
 			return () => {
 				if (isObject(data)) {
+					data.border = _this.styleStack.getProperty('border');
+					data.borderColor = _this.styleStack.getProperty('borderColor');
 					data.fillColor = _this.styleStack.getProperty('fillColor');
 					data.fillOpacity = _this.styleStack.getProperty('fillOpacity');
 				}
