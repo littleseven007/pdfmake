@@ -1854,7 +1854,7 @@ var web_dom_collections_for_each = __webpack_require__(4747);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.to-string.js
 var es_regexp_to_string = __webpack_require__(9714);
 // EXTERNAL MODULE: ./node_modules/@foliojs-fork/pdfkit/js/pdfkit.es5.js
-var pdfkit_es5 = __webpack_require__(9972);
+var pdfkit_es5 = __webpack_require__(7924);
 ;// CONCATENATED MODULE: ./src/PDFDocument.js
 /* provided dependency */ var Buffer = __webpack_require__(710)["Buffer"];
 
@@ -5498,8 +5498,8 @@ var TableProcessor = /*#__PURE__*/function () {
             if (cell.rowSpan && cell.rowSpan > 1) {
               var heights = table.__rowsHeight.slice(rowIndex, rowIndex + cell.rowSpan);
               cellHeight = heights.reduce(function (previousValue, value) {
-                return previousValue + value.height;
-              }, 0);
+                return previousValue + (value.height > 0 ? value.height : 0);
+              }, 0); // 第一行时为负数，不加
             } else {
               cellHeight = table.__rowsHeight[rowIndex].height;
             }
@@ -6830,6 +6830,9 @@ var LayoutBuilder = /*#__PURE__*/function () {
       var result = this.processRow(tableNode.table.body[i], tableNode.table.widths, tableNode._offsets.offsets, tableNode.table.body, i, height);
       addAll(tableNode.positions, result.positions);
       processor.endRow(i, this.writer, result.pageBreaks);
+    }
+    if (tableNode.table.hasCrossPageCellSpan && window.TableNodeTemp) {
+      window.TableNodeTemp.push(tableNode);
     }
     processor.endTable(this.writer);
   }
@@ -8186,7 +8189,7 @@ var OutputDocument = /*#__PURE__*/function () {
 }();
 /* harmony default export */ var src_OutputDocument = (OutputDocument);
 // EXTERNAL MODULE: ./node_modules/file-saver/dist/FileSaver.min.js
-var FileSaver_min = __webpack_require__(57);
+var FileSaver_min = __webpack_require__(1856);
 ;// CONCATENATED MODULE: ./src/browser-extensions/OutputDocumentBrowser.js
 
 
@@ -23426,7 +23429,7 @@ module.exports = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ 9972:
+/***/ 7924:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -59894,7 +59897,7 @@ module.exports = __webpack_require__(7187).EventEmitter;
 
 /***/ }),
 
-/***/ 57:
+/***/ 1856:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function(a,b){if(true)!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (b),

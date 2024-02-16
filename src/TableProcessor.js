@@ -377,7 +377,7 @@ class TableProcessor {
 					let cellHeight = 0;
 					if (cell.rowSpan && cell.rowSpan > 1) {
 						const heights = table.__rowsHeight.slice(rowIndex, rowIndex + cell.rowSpan);
-						cellHeight = heights.reduce((previousValue, value) => previousValue + value.height, 0);
+						cellHeight = heights.reduce((previousValue, value) => previousValue + ( value.height > 0 ? value.height : 0), 0); // 第一行时为负数，不加
 					} else {
 						cellHeight = table.__rowsHeight[rowIndex].height;
 					}
