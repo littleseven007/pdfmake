@@ -751,7 +751,8 @@ function buildCanvas(data, options) {
 	//var margin = options.margin || 4;
 	var matrix = generateFrame(data, options);
 	var n = matrix.length;
-	var modSize = Math.floor(options.fit ? options.fit / n : 5);
+	// var modSize = Math.floor(options.fit ? options.fit / n : 5);
+	var modSize = options.fit ? options.fit / n : 5; // 让fit设定的值固定，暂时不知道源码设计出于什么原因要取整数
 	var size = n * modSize;
 
 	canvas.push({
