@@ -1854,7 +1854,7 @@ var web_dom_collections_for_each = __webpack_require__(4747);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.to-string.js
 var es_regexp_to_string = __webpack_require__(9714);
 // EXTERNAL MODULE: ./node_modules/@foliojs-fork/pdfkit/js/pdfkit.es5.js
-var pdfkit_es5 = __webpack_require__(7924);
+var pdfkit_es5 = __webpack_require__(5840);
 ;// CONCATENATED MODULE: ./src/PDFDocument.js
 /* provided dependency */ var Buffer = __webpack_require__(710)["Buffer"];
 
@@ -3975,7 +3975,8 @@ function buildCanvas(data, options) {
   //var margin = options.margin || 4;
   var matrix = generateFrame(data, options);
   var n = matrix.length;
-  var modSize = Math.floor(options.fit ? options.fit / n : 5);
+  // var modSize = Math.floor(options.fit ? options.fit / n : 5);
+  var modSize = options.fit ? options.fit / n : 5; // 让fit设定的值固定，暂时不知道源码设计出于什么原因要取整数
   var size = n * modSize;
   canvas.push({
     type: 'rect',
@@ -8189,7 +8190,7 @@ var OutputDocument = /*#__PURE__*/function () {
 }();
 /* harmony default export */ var src_OutputDocument = (OutputDocument);
 // EXTERNAL MODULE: ./node_modules/file-saver/dist/FileSaver.min.js
-var FileSaver_min = __webpack_require__(1856);
+var FileSaver_min = __webpack_require__(1441);
 ;// CONCATENATED MODULE: ./src/browser-extensions/OutputDocumentBrowser.js
 
 
@@ -23429,7 +23430,7 @@ module.exports = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ 7924:
+/***/ 5840:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -59897,7 +59898,7 @@ module.exports = __webpack_require__(7187).EventEmitter;
 
 /***/ }),
 
-/***/ 1856:
+/***/ 1441:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function(a,b){if(true)!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (b),
