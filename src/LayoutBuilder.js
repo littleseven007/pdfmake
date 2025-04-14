@@ -684,8 +684,8 @@ class LayoutBuilder {
 
 			processor.endRow(i, this.writer, result.pageBreaks);
 		}
-		if (tableNode.table.hasCrossPageCellSpan && window.TableNodeTemp) {
-      window.TableNodeTemp.push(tableNode)
+		if (tableNode.table.hasCrossPageCellSpan && globalThis.TableNodeTemp) {
+      globalThis.TableNodeTemp.push(tableNode)
     }
 		processor.endTable(this.writer);
 	}

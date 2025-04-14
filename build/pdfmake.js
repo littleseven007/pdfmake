@@ -1854,7 +1854,7 @@ var web_dom_collections_for_each = __webpack_require__(4747);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.to-string.js
 var es_regexp_to_string = __webpack_require__(9714);
 // EXTERNAL MODULE: ./node_modules/@foliojs-fork/pdfkit/js/pdfkit.es5.js
-var pdfkit_es5 = __webpack_require__(5840);
+var pdfkit_es5 = __webpack_require__(7657);
 ;// CONCATENATED MODULE: ./src/PDFDocument.js
 /* provided dependency */ var Buffer = __webpack_require__(710)["Buffer"];
 
@@ -2041,6 +2041,8 @@ var web_dom_collections_iterator = __webpack_require__(3948);
 var es_array_map = __webpack_require__(1249);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.keys.js
 var es_object_keys = __webpack_require__(7941);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/esnext.global-this.js
+var esnext_global_this = __webpack_require__(5743);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
 var es_number_constructor = __webpack_require__(9653);
 ;// CONCATENATED MODULE: ./src/helpers/variableType.js
@@ -6222,6 +6224,7 @@ var Line = /*#__PURE__*/function () {
 
 
 
+
 function addAll(target, otherArray) {
   otherArray.forEach(function (item) {
     target.push(item);
@@ -6832,8 +6835,8 @@ var LayoutBuilder = /*#__PURE__*/function () {
       addAll(tableNode.positions, result.positions);
       processor.endRow(i, this.writer, result.pageBreaks);
     }
-    if (tableNode.table.hasCrossPageCellSpan && window.TableNodeTemp) {
-      window.TableNodeTemp.push(tableNode);
+    if (tableNode.table.hasCrossPageCellSpan && globalThis.TableNodeTemp) {
+      globalThis.TableNodeTemp.push(tableNode);
     }
     processor.endTable(this.writer);
   }
@@ -8190,7 +8193,7 @@ var OutputDocument = /*#__PURE__*/function () {
 }();
 /* harmony default export */ var src_OutputDocument = (OutputDocument);
 // EXTERNAL MODULE: ./node_modules/file-saver/dist/FileSaver.min.js
-var FileSaver_min = __webpack_require__(1441);
+var FileSaver_min = __webpack_require__(496);
 ;// CONCATENATED MODULE: ./src/browser-extensions/OutputDocumentBrowser.js
 
 
@@ -23430,7 +23433,7 @@ module.exports = /*#__PURE__*/function () {
 
 /***/ }),
 
-/***/ 5840:
+/***/ 7657:
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
@@ -59898,7 +59901,7 @@ module.exports = __webpack_require__(7187).EventEmitter;
 
 /***/ }),
 
-/***/ 1441:
+/***/ 496:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function(a,b){if(true)!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (b),
